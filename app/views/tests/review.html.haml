@@ -12,12 +12,13 @@
               Time Stamp
           
             - current_user.tests.each do |test|
-              %tr
-                %td
-                  = test.description
+              - if test.score.present?
+                %tr
+                  %td
+                    = test.description
 
-                %td
-                  = test.score
+                  %td
+                    = test.score
 
-                %td
-                  = test.created_at         
+                  %td
+                    = test.created_at         
