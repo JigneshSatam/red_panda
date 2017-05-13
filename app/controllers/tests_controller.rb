@@ -17,13 +17,13 @@ class TestsController < ApplicationController
 
   def submit
     score = 0
-    test = Test.where(id: params[:id]).last
-    test.test_questions.joins(:question).each do |test_question|
+    @test = Test.where(id: params[:id]).last
+    @test.test_questions.joins(:question).each do |test_question|
       if test_question.user_response == test_question.question.answer_id
         score += 1
       end
     end
-    test.update(score: score)
-    redirect_to review_tests_path
+    @test.update(score: score)
+    # redirect_to review_tests_path
   end
 end
