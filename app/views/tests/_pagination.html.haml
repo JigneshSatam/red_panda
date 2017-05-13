@@ -1,0 +1,11 @@
+/ LOCALS
+/ total_count = Total number of records
+/ per_page = Number of records per page
+/ selected_page = page to go
+- no_of_pages = (total_count/per_page.to_f).ceil
+- if (no_of_pages > 1)
+  - selected_page = selected_page.to_i.zero? ? 1 : selected_page.to_i
+  - pages = [1, (selected_page - 1 > 0 ? selected_page - 1 : (selected_page + 2 if selected_page + 2 <= no_of_pages) ), selected_page, (selected_page + 1 < no_of_pages ? selected_page + 1 : (selected_page - 2 if selected_page - 2 > 1) ), no_of_pages].compact.uniq.sort!
+  .ui.pagination.menu
+    - pages.each do |page|
+      = link_to page, users_path(page: page), class: ("item" + ((selected_page == page) ? " active" : "").to_s)

@@ -1,0 +1,7 @@
+.ui.three.wide.column{id: "td_permission#{app.id}_#{user.id}"}
+  = form_for permission, remote: true do |f|
+    = f.hidden_field :app_id, value: app.id
+    = f.hidden_field :user_id, value: user.id
+    .ui.toggle.checkbox
+      = f.check_box :permitted, id: "#{app.id}_#{user.id}_#{permission.id}", class: "permissions", data: {app_id: app.id, user_id: user.id}
+      = f.label "#{app.name.to_s.camelize.truncate(20)}", for: "#{app.id}_#{user.id}_#{permission.id}"

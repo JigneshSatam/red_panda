@@ -9,12 +9,23 @@
   </head>
 
   <body>
-  	<% if notice %>
-	  <p class="alert alert-success"><%= notice %></p>
-	<% end %>
-	<% if alert %>
-	  <p class="alert alert-danger"><%= alert %></p>
-	<% end %>
+    <% if flash.present? %>
+      <% flash.each do |key, value| %>
+        <div class="ui floating message hidden position_absolute z_index_increased flash_center">
+          <i class="close icon"></i>
+          <!-- <div class="header">
+          </div> -->
+          <div class="flash_message_content">
+            <%= value %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
+  <% if flash.present? %>
+    <script type="text/javascript">
+      show_flash_message();
+    </script>
+  <% end %>
 </html>

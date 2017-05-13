@@ -1,0 +1,66 @@
+.ui.modal.fullscreen#user_addition_modal
+  %i.close.icon.reset
+  .header
+    Add User
+  .content
+    = form_for :user, url: (user.id.present? ? user_path(user) : users_path(user)), method: (user.id.present? ? :put : :post), remote: true, html: {class: "form ui"} do |f|
+      .two.fields
+        .field.required
+          = f.label :first_name
+          = f.text_field :first_name
+        .field
+          = f.label :last_name
+          = f.text_field :last_name
+      .two.fields
+        .field.required
+          = f.label :email
+          = f.text_field :email
+      .field.required
+        = f.label :type
+        = f.select :type, User::TYPE, prompt: "Select type"
+      .actions
+        .ui.black.deny.button.reset{tabindex: "0"}
+          Back
+        %submit.ui.positive.right.labeled.icon.button.submit{tabindex: "0"}
+          .button_text
+            Create User
+          %i.checkmark.icon
+:javascript
+  $(".ui.modal#user_addition_modal .form").form({
+    fields: {
+      first_name: {
+        identifier: "user[first_name]",
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter first name'
+          }
+        ]
+      },
+      type: {
+        identifier: "user[type]",
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select type'
+          }
+        ]
+      },
+      email: {
+        identifier  : "user[email]",
+        rules: [
+          {
+            type   : 'email',
+            prompt : 'Please enter a valid e-mail'
+          }
+        ]
+      }
+    },
+    inline: true,
+    on: 'blur',
+    onFailure: function(formErrors, fields){
+      window.event.preventDefault();
+      window.event.stopPropagation();
+      return false;
+    }
+  });

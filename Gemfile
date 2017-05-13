@@ -57,3 +57,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'less-rails-semantic_ui'
 gem 'autoprefixer-rails'
 gem 'therubyracer'
+
+gem "haml"

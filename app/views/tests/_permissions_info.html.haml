@@ -1,0 +1,12 @@
+/ LOCALS
+/ test ==> test
+%b{id: "permissions_info_#{test.id}"}
+  / - permissions_str = test.permissions.enabled.order("permissions.updated_at DESC").joins(:app).limit(5).pluck("apps.name").map{|n| n.camelize.truncate(12)}.join(", ")
+  / (
+  / = permissions_str.present? ? "Permissions: " + permissions_str : "No permissions"
+  / )
+  / %a#add_permissions{data: {"permission_id" => "permissions_of_#{test.id}"}}
+  /   - if permissions_str.present?
+  /     Change Permissions
+  /   - else
+  /     Add Permissions

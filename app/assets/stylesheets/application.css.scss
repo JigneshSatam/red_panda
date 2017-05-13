@@ -14,3 +14,20 @@
  *= require_tree .
  *= require_self
  */
+
+.position_absolute{
+  position: absolute !important;
+}
+
+.z_index_increased{
+  z-index: 100;
+}
+.flash_center{
+  margin: 0 auto !important;
+  top: 0;
+  bottom: 0;
+  width: 60%;
+  height: 45px;
+  right: 0;
+  left: 0;
+}
