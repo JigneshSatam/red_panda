@@ -5,10 +5,11 @@ Rails.application.routes.draw do
     root 'devise/sessions#new'
   end
   get "tests/test1", to: "tests#test1"
+  get "tests/review", to: "tests#review"
   resources :tests
   resources :questions
 
-
+  
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -26,9 +26,10 @@
       /   - App.find_each do |app|
       /     %th.ui.center.aligned.fitted{style: "width: 3%"}
       /       = app.name.camelcase
-    %tbody#users_table
-      - @tests.each do |test|
-        = render partial: "tests/user_table_row", locals: {test: test}
+      
+    /%tbody#users_table
+    /  - @tests.each do |test|
+    /    = render partial: "tests/user_table_row", locals: {test: test}
     %tfoot
       %tr
         %th
