@@ -1,0 +1,30 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title McqApp
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    - if flash.present?
+      - flash.each do |key, value|
+        .ui.floating.message.hidden.position_absolute.z_index_increased.flash_center
+          %i.close.icon
+          /
+            <div class="header">
+            </div>
+          .flash_message_content
+            = value
+    - if current_user.present?
+      .ui.top.attached.tabular.menu.inverted.no_top_margin
+        =link_to current_user.email, tests_path, class: "active item"
+        .right.menu
+          .item
+            .ui.transparent.icon.input
+              = link_to destroy_user_session_path, method: :delete, class: "item" do
+                Logout
+    = yield
+  - if flash.present?
+    :javascript
+      show_flash_message();
