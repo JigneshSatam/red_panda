@@ -1,0 +1,19 @@
+
+
+<form class="ui form">
+  <% Questions.all.each do |question|%>
+    <div class="field">
+      <label><%=question.description%></label>
+    </div>
+
+    <%question.options.each do |option| %>
+      <div class="field">
+        <div class="ui checkbox">
+          <input type="checkbox" tabindex="0" class="hidden">
+          <label><%=option%></label>
+        </div>
+      </div>
+    <%end%>
+  <%end%>
+  <button class="ui button" type="submit">Submit</button>
+</form>
