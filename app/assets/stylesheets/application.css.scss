@@ -31,3 +31,20 @@
   right: 0;
   left: 0;
 }
+
+body > .middle.grid{
+  height: 100%;
+}
+
+
+.ui.grid:after, .ui.row:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.no_top_margin{
+  margin-top: 0 !important;
+}
