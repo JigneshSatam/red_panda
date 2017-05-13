@@ -10,23 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513024214) do
+ActiveRecord::Schema.define(version: 20170513073811) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "options", force: :cascade do |t|
     t.text     "description"
-    t.boolean  "is_answer"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["question_id"], name: "index_options_on_question_id"
+    t.index ["question_id"], name: "index_options_on_question_id", using: :btree
   end
 
   create_table "questions", force: :cascade do |t|
     t.text     "question_text"
-    t.integer  "test_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["test_id"], name: "index_questions_on_test_id"
+    t.integer  "answer_id"
+  end
+
+  create_table "test_questions", force: :cascade do |t|
+    t.integer  "test_id"
+    t.integer  "question_id"
+    t.integer  "user_response"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "tests", force: :cascade do |t|
@@ -35,7 +44,7 @@ ActiveRecord::Schema.define(version: 20170513024214) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "score"
-    t.index ["user_id"], name: "index_tests_on_user_id"
+    t.index ["user_id"], name: "index_tests_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,8 +60,8 @@ ActiveRecord::Schema.define(version: 20170513024214) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
