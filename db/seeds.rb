@@ -20,7 +20,7 @@ question6 = Question.create(test_id: test.id, question_text: "An undergraduate d
 question7 = Question.create(test_id: test.id, question_text: "Ethicist:   The most advanced kind of moral motivation is based solely on abstract principles. This form of motivation is in contrast with calculated self-interest or the desire to adhere to societal norms and conventions.<br /><br />The actions of which one of the following individuals exhibit the most advanced kind of moral motivation, as described by the ethicist?<br />")
 question8 = Question.create(test_id: test.id, question_text: "Although video game sales have increased steadily over the past 3 years, we can expect a reversal of this trend in the very near future. Historically, over three quarters of video games sold have been purchased by people from 13 to 16 years of age, and the number of people in this age group is expected to decline steadily over the next 10 years.<br /><br />Which one of the following, if true, would most seriously weaken the argument?<br />")
 
-test_question1 = TestQuestion.create()
+# test_question1 = TestQuestion.create()
 
 Option.create(question_id: question1.id, description: "If an action taken to secure the survival of a business fails to enhance the welfare of the business's employees, that action cannot be good for the business as a whole.")
 answer1 = Option.create(question_id: question1.id, description: "Some measures taken by a business to increase productivity fail to be beneficial to the business as a whole.")
