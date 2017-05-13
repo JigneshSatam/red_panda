@@ -5,14 +5,19 @@ Rails.application.routes.draw do
     root 'devise/sessions#new'
   end
   get "/home", to: "application#home"
-  get "tests/test1", to: "tests#test1"
-  get "tests/review", to: "tests#review"
   resources :test_questions do
     member do
       post "user_response"
     end
   end
-  resources :tests
+  resources :tests do
+    collection do
+      get "review"
+    end
+    member do
+      post "submit"
+    end
+  end
 
 
 

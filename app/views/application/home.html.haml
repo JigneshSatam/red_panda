@@ -12,6 +12,6 @@
             Get Started
             %i.right.arrow.icon
           - if current_user.tests.any? {|test| test.score.present?}
-            = link_to tests_review_path, method: :get, class: "ui huge primary button" do
-              Review
-            
+            = link_to "Review", review_tests_path, class: "ui huge primary button"
+
+

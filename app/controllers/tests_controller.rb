@@ -12,13 +12,18 @@ class TestsController < ApplicationController
     redirect_to test_question_path(test.test_questions.first.id)
   end
 
-  def test1
-    @question = Question.first(2).last
-    @first_question_id = 1
-    @last_question_id = Question.last.id
-    render "questions/show"
+  def review
   end
 
-  def review
+  def submit
+    score = 0
+    test = Test.where(id: params[:id]).last
+    test.test_questions.joins(:question).each do |test_question|
+      if test_question.user_response == test_question.question.answer_id
+        score += 1
+      end
+    end
+    test.update(score: score)
+    redirect_to review_tests_path
   end
 end
