@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   devise_scope :user do
     root 'devise/sessions#new'
   end
-  get "tests/test1", to: "tests#test1"
   get "/home", to: "application#home"
+  get "tests/test1", to: "tests#test1"
+  get "tests/review", to: "tests#review"
   resources :test_questions
   resources :tests
 

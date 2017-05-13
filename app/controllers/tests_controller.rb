@@ -18,4 +18,7 @@ class TestsController < ApplicationController
     @last_question_id = Question.last.id
     render "questions/show"
   end
+
+  def review
+  end
 end
