@@ -9,13 +9,13 @@
           .ui.sixteen.column.grid
             - @question.options.each do |option|
               .sixteen.wide.column.centered.aligned
-                .fluid.ui.button{class: ("active" if option.id == @question.answer_id)}
+                .fluid.ui.button{class: ("active" if option.id == @test_question.user_response)}
                   = option.description.html_safe
         .extra.content
         .ui.two.bottom.attached.buttons
-          =link_to "Previous", question_path(@question.id - 1), class: ("ui secondary button" + ("disabled" if @first_question_id == @question.id).to_s)
+          =link_to "Previous", test_question_path(@test_question.id - 1), class: ("ui secondary button" + ("disabled" if @first_question_id == @test_question.id).to_s)
 
-          =link_to "Next", question_path(@question.id + 1), class: ("ui secondary button" + ("disabled" if @last_question_id == @question.id).to_s)
+          =link_to "Next", test_question_path(@test_question.id + 1), class: ("ui secondary button" + ("disabled" if @last_question_id == @test_question.id).to_s)
 
 
   / .ui.sixteen.column.grid.container

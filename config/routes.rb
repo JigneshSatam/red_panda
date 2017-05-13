@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     root 'devise/sessions#new'
   end
   get "tests/test1", to: "tests#test1"
+  get "/home", to: "application#home"
+  resources :test_questions
   resources :tests
-  resources :questions
 
 
 

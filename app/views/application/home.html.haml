@@ -1,0 +1,13 @@
+.ui.bottom.attached.segment{style: "height: 91.4%"}
+  .ui.sixteen.column.grid
+    .twelve.wide.column.centered.aligned
+      .ui.fluid.raised.card
+        .image
+          %img{src: image_path("logo.jpeg"),style: "width: 100%; height: 366px;"}
+        .content.ui.center.aligned
+          %h1.ui.header
+            Let's start with the new test.
+        .extra.content.center.aligned
+          = link_to tests_path, method: :post, class: "ui huge primary button" do
+            Get Started
+            %i.right.arrow.icon

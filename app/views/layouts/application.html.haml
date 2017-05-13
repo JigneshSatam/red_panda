@@ -18,7 +18,7 @@
             = value
     - if current_user.present?
       .ui.top.attached.tabular.menu.inverted.no_top_margin
-        =link_to current_user.email, tests_path, class: "active item"
+        =link_to current_user.email, home_path, class: "active item"
         .right.menu
           .item
             .ui.transparent.icon.input
