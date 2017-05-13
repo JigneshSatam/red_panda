@@ -11,9 +11,6 @@
       - flash.each do |key, value|
         .ui.floating.message.hidden.position_absolute.z_index_increased.flash_center
           %i.close.icon
-          /
-            <div class="header">
-            </div>
           .flash_message_content
             = value
     - if current_user.present?

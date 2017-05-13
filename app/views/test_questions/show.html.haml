@@ -9,29 +9,10 @@
           .ui.sixteen.column.grid
             - @question.options.each do |option|
               .sixteen.wide.column.centered.aligned
-                .fluid.ui.button{class: ("active" if option.id == @test_question.user_response)}
+                = link_to user_response_test_question_path(@test_question.id, user_response: option.id), method: :post, remote: true, data: {option_id: option.id}, class: ("fluid ui button options" + (" active" if option.id == @test_question.user_response).to_s) do
                   = option.description.html_safe
         .extra.content
         .ui.two.bottom.attached.buttons
           =link_to "Previous", test_question_path(@test_question.id - 1), class: ("ui secondary button" + ("disabled" if @first_question_id == @test_question.id).to_s)
 
           =link_to "Next", test_question_path(@test_question.id + 1), class: ("ui secondary button" + ("disabled" if @last_question_id == @test_question.id).to_s)
-
-
-  / .ui.sixteen.column.grid.container
-  /   .sixteen.wide.center.aligned.column
-  /     %h3= question.question_text.html_safe
-
-  / %form.ui.form
-  /   / # - Question.joins(:options).each do |question|
-  /   .field
-  /   %br/
-  /   - question.options.each do |option|
-  /     .field
-  /       .ui.radio
-  /         %input.hidden{:name => "<haml_loud", :tabindex => "0", :type => "radio"}>/
-  /         question.id&gt;
-  /         %label= option.description.html_safe
-  /   %br/
-  /   %button.ui.button{:type => "submit"} Submit
-
