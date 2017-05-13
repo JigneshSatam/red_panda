@@ -11,9 +11,6 @@ Rails.application.routes.draw do
     end
   end
   resources :tests do
-    collection do
-      get "review"
-    end
     member do
       post "submit"
     end

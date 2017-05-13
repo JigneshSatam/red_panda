@@ -15,8 +15,9 @@
             = value
     - if current_user.present?
       .ui.top.attached.tabular.menu.inverted.no_top_margin
-        =link_to current_user.email, home_path, class: "active item"
+        =link_to "Home", home_path, class: ("item" + (" active" if params[:action] == "home").to_s)
         .right.menu
+          .item.inverted= current_user.email
           .item
             .ui.transparent.icon.input
               = link_to destroy_user_session_path, method: :delete, class: "item" do

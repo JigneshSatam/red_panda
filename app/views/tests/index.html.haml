@@ -1,106 +1,24 @@
+.row
+  .sixteen.wide.column
+    .ui.segment
+      %table.ui.celled.structured.table#users_table
+        %thead
+          %tr
+            %th
+              Test name
+            %th
+              Score
+            %th
+              Time Stamp
 
-/ <<<<<<< HEAD
-/ =======
-/           /       %i.circular.search.link.icon{type: "submit"}
+            - @tests.each do |test|
+              - if test.score.present?
+                %tr
+                  %td
+                    = test.description
 
-/           /   .results
-/       /   %th.center.aligned{:colspan => App.count} Permissions
-/       / %tr
-/       /   - App.find_each do |app|
-/       /     %th.ui.center.aligned.fitted{style: "width: 3%"}
-/       /       = app.name.camelcase
+                  %td
+                    = test.score
 
-/     /%tbody#users_table
-/     /  - @tests.each do |test|
-/     /    = render partial: "tests/user_table_row", locals: {test: test}
-/     %tfoot
-/       %tr
-/         %th
-/           / = paginate @users_and_permissions
-/           =# render partial: "users/pagination", locals: {total_count: User.count, per_page: User::PER_PAGE, selected_page: params[:page]}
-
-
-/ / .ui.grid
-/ /   .ui.menu
-/ /     .row
-/ /       .item{:style => "padding: 0px;"}
-/ /         = current_user.email
-/ /         / # = image_tag 'logo.png', style: "width: 64px;"
-/ /       .right.menu
-/ /         /
-/ /           <div class="item">
-/ /           <div class="ui transparent icon input pointing input_white">
-/ /           <input type="text" placeholder="Search..." class="input_white white_bottom_color">
-/ /           <i class="search link icon"></i>
-/ /           </div>
-/ /           </div>
-/ /         /
-/ /           <div class="item">
-/ /           </div>
-/ /         / # = link_to current_user.email, main_app.sessions_path, class: "item"
-/ /         / .item
-/ /         /   = current_user.email
-/ /         = link_to destroy_user_session_path, method: :delete, class: "item" do
-/ /           Logout
-/ /   .sixteen.wide.column
-/ /     .ui.icon.inverted.black.menu
-
-/ / .container#users_index
-/ /   .ui.grid.padded
-/ /     .row
-/ /       .four.wide.column.right.floated.right.aligned
-/ /         %button.ui.teal.button#add_user
-/ /           %i.add.user.icon
-/ /           Add User
-/ /         %button.ui.teal.button#add_app
-/ /           %i.add.icon
-/ /           Add App
-/ /   .row
-/ /     .sixteen.wide.column
-/ /       .ui.segment
-/ /         %table.ui.celled.structured.table#users_table
-/ /           %thead
-/ /             %tr
-/ /               %th.right.aligned{:rowspan => 2}
-/ /                 / = form_tag search_users_path, method: :get do
-/ /                 /   .ui.search
-/ /                 /     .ui.icon.input
-/ /                 /       %input{class: "prompt", type: "text", placeholder: "Search Users...", name: "q", value: params[:q]}
-
-/ /                 /       %i.circular.search.link.icon{type: "submit"}
-
-/ /                 /   .results
-/ /             /   %th.center.aligned{:colspan => App.count} Permissions
-/ /             / %tr
-/ /             /   - App.find_each do |app|
-/ /             /     %th.ui.center.aligned.fitted{style: "width: 3%"}
-/ /             /       = app.name.camelcase
-/ /           %tbody#users_table
-/ /             - @tests.each do |test|
-/ /               = render partial: "tests/user_table_row", locals: {test: test}
-/ /           %tfoot
-/ /             %tr
-/ /               %th
-/ /                 / = paginate @users_and_permissions
-/ /                 =# render partial: "users/pagination", locals: {total_count: User.count, per_page: User::PER_PAGE, selected_page: params[:page]}
-/ / = render partial: "users/create_modal", locals: {user: Test.new}
-/ / = render partial: "apps/create_modal", locals: {app: App.new}
-/ / :javascript
-/ /   $("#add_user").click(function(){
-/ /     var user_modal = $('.ui.modal#user_addition_modal');
-/ /     user_modal.find("form").attr("action", "/users");
-/ /     user_modal.find(".header").text("Add User");
-/ /     user_modal.find(".ui.button.submit .button_text").text("Create User");
-/ /     user_modal.find("form").form("clear");;
-/ /     user_modal.modal('show');
-/ /   });
-/ /   $("#add_app").click(function(){
-/ /     var app_modal = $('.ui.modal#app_addition_modal')
-/ /     app_modal.find("form").form("clear");;
-/ /     app_modal.modal('show');
-/ /   });
-/ /   $('.ui.search .search.link.icon').click(function(){
-/ /     $(this).closest("form").submit();
-
-/ /   });
-/ >>>>>>> 112776b9791f60b6333aa6f208602659d0e055dc
+                  %td
+                    = test.created_at

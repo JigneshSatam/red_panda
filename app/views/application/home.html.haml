@@ -3,7 +3,7 @@
     .twelve.wide.column.centered.aligned
       .ui.fluid.raised.card
         .image
-          %img{src: image_path("logo.jpeg"),style: "width: 100%; height: 366px;"}
+          %img{src: asset_path("logo.jpeg"),style: "width: 100%; height: 366px;"}
         .content.ui.center.aligned
           %h1.ui.header
             Let's start with the new test.
@@ -11,7 +11,7 @@
           = link_to tests_path, method: :post, class: "ui huge primary button" do
             Get Started
             %i.right.arrow.icon
-          - if current_user.tests.any? {|test| test.score.present?}
-            = link_to "Review", review_tests_path, class: "ui huge primary button"
+          - if current_user.tests.pluck(:score).compact.present?
+            = link_to "Review", tests_path, class: "ui huge primary button"
 
 
