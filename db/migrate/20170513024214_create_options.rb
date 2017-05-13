@@ -3,6 +3,7 @@ class CreateOptions < ActiveRecord::Migration[5.0]
     create_table :options do |t|
       t.text :description
       t.boolean :is_answer
+      t.belongs_to :question
 
       t.timestamps
     end
