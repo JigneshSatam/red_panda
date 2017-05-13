@@ -10,30 +10,15 @@
               Score
             %th
               Time Stamp
-          %tr
+          
             - current_user.tests.each do |test|
-              %td
-                = test.description
+              - if test.score.present?
+                %tr
+                  %td
+                    = test.description
 
-              %td
-                = test.score
+                  %td
+                    = test.score
 
-              %td
-                = test.created_at         
-              / = form_tag search_users_path, method: :get do
-              /   .ui.search
-              /     .ui.icon.input
-              /       %input{class: "prompt", type: "text", placeholder: "Search Users...", name: "q", value: params[:q]}
-
-              /       %i.circular.search.link.icon{type: "submit"}
-
-              /   .results
-          /   %th.center.aligned{:colspan => App.count} Permissions
-          / %tr
-          /   - App.find_each do |app|
-          /     %th.ui.center.aligned.fitted{style: "width: 3%"}
-          /       = app.name.camelcase
-        %tbody#users_table
-          - current_user.tests.each do |test|
-            = test.test_questions
-            /= render partial: "tests/user_table_row", locals: {test: test}
+                  %td
+                    = test.created_at         
